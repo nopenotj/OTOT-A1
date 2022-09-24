@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    image: python
+    command: python -m http.server 8080 --directory /www/data
+    volumes:
+      - ./index.html:/www/data/index.html
+    ports:
+      - "8080:8080"
+  nginx:
+    build:
+      context: ./
+    ports:
+      - "80:80"
